@@ -107,10 +107,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set git config
-        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Set git config
+      #   uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get changed files
         id: changed-files
@@ -126,11 +126,11 @@ jobs:
             ansible/**
             docker/**
 
-      - name: Free disk space
-        if: ${{ steps.changed-files.outputs.any_changed == 'true' ||
-          github.event_name == 'workflow_dispatch' ||
-          (github.event_name == 'push' && github.ref_type == 'tag') }}
-        uses: ./.github/actions/free-disk-space
+      # - name: Free disk space
+      #   if: ${{ steps.changed-files.outputs.any_changed == 'true' ||
+      #     github.event_name == 'workflow_dispatch' ||
+      #     (github.event_name == 'push' && github.ref_type == 'tag') }}
+      #   uses: ./.github/actions/free-disk-space
 
       - name: Build 'autoware-tools'
         if: ${{ steps.changed-files.outputs.any_changed == 'true' ||
