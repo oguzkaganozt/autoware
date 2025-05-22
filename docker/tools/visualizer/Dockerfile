@@ -28,6 +28,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   websockify \
   python3-numpy \
   python3-xdg \
+  falkon \
   && pip install --no-cache-dir yamale xmlschema \
   && /autoware/cleanup_system.sh $LIB_DIR $ROS_DISTRO
 
