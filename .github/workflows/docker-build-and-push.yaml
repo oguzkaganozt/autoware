@@ -67,6 +67,7 @@ jobs:
           (github.event_name == 'push' && github.ref_type == 'tag') }}
         uses: ./.github/actions/docker-build-and-push
         with:
+          token: ${{ secrets.GHCR_PAT }}
           platform: ${{ matrix.platform }}
           target-image: autoware
           build-args: |
@@ -200,6 +201,7 @@ jobs:
           (github.event_name == 'push' && github.ref_type == 'tag') }}
         uses: ./.github/actions/docker-build-and-push-cuda
         with:
+          token: ${{ secrets.GHCR_PAT }}
           platform: ${{ matrix.platform }}
           target-image: autoware
           build-args: |
@@ -228,6 +230,7 @@ jobs:
       - name: Combine multi arch images for 'autoware' without CUDA
         uses: ./.github/actions/combine-multi-arch-images
         with:
+          token: ${{ secrets.GHCR_PAT }}
           package-name: autoware
 
   update-docker-manifest-cuda:
@@ -240,6 +243,7 @@ jobs:
       - name: Combine multi arch images for 'autoware' with CUDA
         uses: ./.github/actions/combine-multi-arch-images
         with:
+          token: ${{ secrets.GHCR_PAT }}
           package-name: autoware
 
   update-docker-manifest-tools:
