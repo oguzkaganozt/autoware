@@ -132,7 +132,7 @@ jobs:
         uses: ./.github/actions/docker-build-and-push-tools
         with:
           token: ${{ secrets.GHCR_PAT }}
-          max-parallelism: 4
+          max-parallelism: 8
           platform: ${{ matrix.platform }}
           target-image: autoware-tools
           build-args: |
