@@ -19,11 +19,11 @@ jobs:
         platform: [amd64, arm64]
         include:
           - platform: amd64
-            runner: ubuntu-22.04
+            runner: buildjet-32vcpu-ubuntu-2204
             arch-platform: linux/amd64
             lib-dir: x86_64
           - platform: arm64
-            runner: ubuntu-22.04-arm
+            runner: buildjet-32vcpu-ubuntu-2204
             arch-platform: linux/arm64
             lib-dir: aarch64
     runs-on: ${{ matrix.runner }}
@@ -91,11 +91,11 @@ jobs:
         platform: [amd64, arm64]
         include:
           - platform: amd64
-            runner: ubuntu-22.04
+            runner: buildjet-32vcpu-ubuntu-2204
             arch-platform: linux/amd64
             lib-dir: x86_64
           - platform: arm64
-            runner: ubuntu-22.04-arm
+            runner: buildjet-32vcpu-ubuntu-2204
             arch-platform: linux/arm64
             lib-dir: aarch64
     runs-on: ${{ matrix.runner }}
@@ -156,11 +156,11 @@ jobs:
         platform: [amd64, arm64]
         include:
           - platform: amd64
-            runner: codebuild-autoware-us-east-1-${{ github.run_id }}-${{ github.run_attempt }}-ubuntu-7.0-large
+            runner: buildjet-32vcpu-ubuntu-2204
             arch-platform: linux/amd64
             lib-dir: x86_64
           - platform: arm64
-            runner: ubuntu-22.04-arm
+            runner: buildjet-32vcpu-ubuntu-2204
             arch-platform: linux/arm64
             lib-dir: aarch64
     runs-on: ${{ matrix.runner }}
@@ -219,7 +219,7 @@ jobs:
 
   update-docker-manifest:
     needs: docker-build-and-push
-    runs-on: ubuntu-22.04
+    runs-on: buildjet-32vcpu-ubuntu-2204
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -231,7 +231,7 @@ jobs:
 
   update-docker-manifest-cuda:
     needs: docker-build-and-push-cuda
-    runs-on: ubuntu-22.04
+    runs-on: buildjet-32vcpu-ubuntu-2204
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -243,7 +243,7 @@ jobs:
 
   update-docker-manifest-tools:
     needs: docker-build-and-push-tools
-    runs-on: ubuntu-22.04
+    runs-on: buildjet-32vcpu-ubuntu-2204
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
