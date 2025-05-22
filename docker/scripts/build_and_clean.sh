@@ -14,9 +14,12 @@ function build_and_clean() {
             --merge-install \
             --install-base "$install_base" \
             --mixin release compile-commands ccache \
+            --parallel-workers 2 \
             $colcon_build_args &&
         du -sh "$ccache_dir" && ccache -s &&
         rm -rf /autoware/build /autoware/log
 }
 
+echo "BUILDING WITH PARALLEL WORKERS: 2"
+sleep 1
 build_and_clean "$@"
