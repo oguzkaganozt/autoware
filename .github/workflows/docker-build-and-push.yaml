@@ -1,11 +1,6 @@
 name: docker-build-and-push
 
 on:
-  push:
-    branches:
-      - main
-    tags:
-      - "*.*.*"
   workflow_dispatch:
 
 jobs:
@@ -23,7 +18,7 @@ jobs:
             arch-platform: linux/amd64
             lib-dir: x86_64
           - platform: arm64
-            runner: buildjet-32vcpu-ubuntu-2204
+            runner: buildjet-32vcpu-ubuntu-2204-arm
             arch-platform: linux/arm64
             lib-dir: aarch64
     runs-on: ${{ matrix.runner }}
@@ -162,7 +157,7 @@ jobs:
             arch-platform: linux/amd64
             lib-dir: x86_64
           - platform: arm64
-            runner: buildjet-32vcpu-ubuntu-2204
+            runner: buildjet-32vcpu-ubuntu-2204-arm
             arch-platform: linux/arm64
             lib-dir: aarch64
     runs-on: ${{ matrix.runner }}
