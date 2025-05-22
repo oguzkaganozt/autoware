@@ -5,6 +5,9 @@ inputs:
   package-name:
     description: ""
     required: true
+  token:
+    description: GitHub token.
+    required: true
 
 runs:
   using: composite
@@ -14,7 +17,7 @@ runs:
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
-        password: ${{ github.token }}
+        password: ${{ inputs.token }}
 
     - name: Set image name
       id: set-image-name
