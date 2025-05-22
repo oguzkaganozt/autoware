@@ -63,7 +63,7 @@ jobs:
         uses: ./.github/actions/docker-build-and-push
         with:
           token: ${{ secrets.GHCR_PAT }}
-          # max-parallelism: 8
+          max-parallelism: 6
           platform: ${{ matrix.platform }}
           target-image: autoware
           build-args: |
@@ -88,11 +88,11 @@ jobs:
         platform: [amd64, arm64]
         include:
           - platform: amd64
-            runner: buildjet-32vcpu-ubuntu-2204
+            runner: buildjet-16vcpu-ubuntu-2204
             arch-platform: linux/amd64
             lib-dir: x86_64
           - platform: arm64
-            runner: buildjet-32vcpu-ubuntu-2204-arm
+            runner: buildjet-16vcpu-ubuntu-2204-arm
             arch-platform: linux/arm64
             lib-dir: aarch64
     runs-on: ${{ matrix.runner }}
@@ -132,7 +132,7 @@ jobs:
         uses: ./.github/actions/docker-build-and-push-tools
         with:
           token: ${{ secrets.GHCR_PAT }}
-          max-parallelism: 8
+          max-parallelism: 6
           platform: ${{ matrix.platform }}
           target-image: autoware-tools
           build-args: |
@@ -199,7 +199,7 @@ jobs:
         uses: ./.github/actions/docker-build-and-push-cuda
         with:
           token: ${{ secrets.GHCR_PAT }}
-          # max-parallelism: 8
+          max-parallelism: 6
           platform: ${{ matrix.platform }}
           target-image: autoware
           build-args: |
@@ -220,7 +220,7 @@ jobs:
 
   update-docker-manifest:
     needs: docker-build-and-push
-    runs-on: buildjet-32vcpu-ubuntu-2204
+    runs-on: buildjet-16vcpu-ubuntu-2204
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -233,7 +233,7 @@ jobs:
 
   update-docker-manifest-cuda:
     needs: docker-build-and-push-cuda
-    runs-on: buildjet-32vcpu-ubuntu-2204
+    runs-on: buildjet-16vcpu-ubuntu-2204
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -246,7 +246,7 @@ jobs:
 
   update-docker-manifest-tools:
     needs: docker-build-and-push-tools
-    runs-on: buildjet-32vcpu-ubuntu-2204
+    runs-on: buildjet-16vcpu-ubuntu-2204
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
