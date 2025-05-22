@@ -63,6 +63,7 @@ jobs:
         uses: ./.github/actions/docker-build-and-push
         with:
           token: ${{ secrets.GHCR_PAT }}
+          # max-parallelism: 8
           platform: ${{ matrix.platform }}
           target-image: autoware
           build-args: |
@@ -131,6 +132,7 @@ jobs:
         uses: ./.github/actions/docker-build-and-push-tools
         with:
           token: ${{ secrets.GHCR_PAT }}
+          max-parallelism: 4
           platform: ${{ matrix.platform }}
           target-image: autoware-tools
           build-args: |
@@ -197,6 +199,7 @@ jobs:
         uses: ./.github/actions/docker-build-and-push-cuda
         with:
           token: ${{ secrets.GHCR_PAT }}
+          # max-parallelism: 8
           platform: ${{ matrix.platform }}
           target-image: autoware
           build-args: |
