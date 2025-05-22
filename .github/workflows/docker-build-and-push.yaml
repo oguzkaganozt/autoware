@@ -8,9 +8,9 @@ on:
       - "*.*.*"
   workflow_dispatch:
 
-permissions:
-  contents: read
-  packages: write
+# permissions:
+#   contents: read
+#   packages: write
 
 jobs:
   load-env:
@@ -107,10 +107,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      # - name: Set git config
-      #   uses: autowarefoundation/autoware-github-actions/set-git-config@v1
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set git config
+        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get changed files
         id: changed-files
