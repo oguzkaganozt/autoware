@@ -1,17 +1,32 @@
 services:
   autoware:
     image: ghcr.io/autowarefoundation/autoware:universe
+    environment:
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
     volumes:
-      - $HOME/autoware_map:/root/autoware_map
+      - autoware_map:/root/autoware_map
     command: >
       ros2 launch autoware_launch
       planning_simulator.launch.xml
-      map_path:="/root/autoware_map/sample-map-planning"
+      map_path:=/root/autoware_map
       vehicle_model:=sample_vehicle
       sensor_model:=sample_sensor_kit
+      scenario_simulation:=true
       rviz:=false
-
+  
+  scenario_simulator:
+    image: ghcr.io/oguzkaganozt/autoware-tools:scenario-simulator-amd64
+    environment:
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    volumes:
+      - autoware_map:/opt/autoware/share/kashiwanoha_map/map
+      
   visualizer:
     image: ghcr.io/oguzkaganozt/autoware-tools:visualizer-amd64
+    environment:
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
     ports:
       - 6080:6080
+
+volumes:
+  autoware_map:
