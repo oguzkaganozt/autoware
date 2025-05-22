@@ -15,6 +15,9 @@ inputs:
     default: 2
     description: Maximum parallelism for buildkitd.
     required: false
+  token:
+    description: GitHub token.
+    required: true
 
 runs:
   using: composite
@@ -106,7 +109,7 @@ runs:
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
-        password: ${{ secrets.GHCR_PAT }}
+        password: ${{ inputs.token }}
 
     - name: Build and Push to GitHub Container Registry
       uses: docker/bake-action@v5
