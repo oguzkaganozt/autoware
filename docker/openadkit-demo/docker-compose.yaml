@@ -25,6 +25,8 @@ services:
     image: ghcr.io/oguzkaganozt/autoware-tools:visualizer-amd64
     environment:
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
     ports:
       - 6080:6080
 

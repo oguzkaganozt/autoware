@@ -88,7 +88,12 @@ if [ "$REMOTE_DISPLAY" == "false" ]; then
     exec "$@"
 else
     configure_vnc
-    falkon --no-sandbox --fullscreen --new-window "http://localhost:6080/vnc.html?resize=scale&password=${REMOTE_PASSWORD}&autoconnect=true"
+    if [ -f /tmp/.X11-unix/X0 ]; then
+        echo "X11 display found"
+        falkon --no-sandbox --fullscreen --new-window "http://localhost:6080/vnc.html?resize=scale&password=${REMOTE_PASSWORD}&autoconnect=true"
+    else
+        echo "No X11 display found"
+    fi
     [ $# -eq 0 ] && sleep infinity
     exec "$@"
 fi
