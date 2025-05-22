@@ -42,6 +42,7 @@ jobs:
       - name: Build Autoware's base images
         uses: ./.github/actions/docker-build-and-push-base
         with:
+          token: ${{ secrets.GHCR_PAT }}
           target-image: autoware-base
           build-args: |
             *.platform=linux/amd64,linux/arm64
