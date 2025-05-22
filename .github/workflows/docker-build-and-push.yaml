@@ -95,7 +95,7 @@ jobs:
             arch-platform: linux/amd64
             lib-dir: x86_64
           - platform: arm64
-            runner: buildjet-32vcpu-ubuntu-2204
+            runner: buildjet-32vcpu-ubuntu-2204-arm
             arch-platform: linux/arm64
             lib-dir: aarch64
     runs-on: ${{ matrix.runner }}
@@ -140,7 +140,7 @@ jobs:
             *.platform=${{ matrix.arch-platform }}
             *.args.ROS_DISTRO=${{ needs.load-env.outputs.rosdistro }}
             *.args.LIB_DIR=${{ matrix.lib-dir }}
-            
+
       - name: Show disk space
         if: always()
         run: |
