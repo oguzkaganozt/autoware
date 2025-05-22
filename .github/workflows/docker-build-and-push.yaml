@@ -8,10 +8,6 @@ on:
       - "*.*.*"
   workflow_dispatch:
 
-# permissions:
-#   contents: read
-#   packages: write
-
 jobs:
   load-env:
     uses: ./.github/workflows/load-env.yaml
