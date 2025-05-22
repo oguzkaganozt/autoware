@@ -14,11 +14,11 @@ jobs:
         platform: [amd64, arm64]
         include:
           - platform: amd64
-            runner: buildjet-32vcpu-ubuntu-2204
+            runner: buildjet-16vcpu-ubuntu-2204
             arch-platform: linux/amd64
             lib-dir: x86_64
           - platform: arm64
-            runner: buildjet-32vcpu-ubuntu-2204-arm
+            runner: buildjet-16vcpu-ubuntu-2204-arm
             arch-platform: linux/arm64
             lib-dir: aarch64
     runs-on: ${{ matrix.runner }}
@@ -50,11 +50,11 @@ jobs:
             ansible/**
             docker/**
 
-      # - name: Free disk space
-      #   if: ${{ steps.changed-files.outputs.any_changed == 'true' ||
-      #     github.event_name == 'workflow_dispatch' ||
-      #     (github.event_name == 'push' && github.ref_type == 'tag') }}
-      #   uses: ./.github/actions/free-disk-space
+      - name: Free disk space
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' ||
+          github.event_name == 'workflow_dispatch' ||
+          (github.event_name == 'push' && github.ref_type == 'tag') }}
+        uses: ./.github/actions/free-disk-space
 
       - name: Build 'Autoware' without CUDA
         if: ${{ steps.changed-files.outputs.any_changed == 'true' ||
@@ -119,11 +119,11 @@ jobs:
             ansible/**
             docker/**
 
-      # - name: Free disk space
-      #   if: ${{ steps.changed-files.outputs.any_changed == 'true' ||
-      #     github.event_name == 'workflow_dispatch' ||
-      #     (github.event_name == 'push' && github.ref_type == 'tag') }}
-      #   uses: ./.github/actions/free-disk-space
+      - name: Free disk space
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' ||
+          github.event_name == 'workflow_dispatch' ||
+          (github.event_name == 'push' && github.ref_type == 'tag') }}
+        uses: ./.github/actions/free-disk-space
 
       - name: Build 'autoware-tools'
         if: ${{ steps.changed-files.outputs.any_changed == 'true' ||
@@ -155,11 +155,11 @@ jobs:
         platform: [amd64, arm64]
         include:
           - platform: amd64
-            runner: buildjet-32vcpu-ubuntu-2204
+            runner: buildjet-16vcpu-ubuntu-2204
             arch-platform: linux/amd64
             lib-dir: x86_64
           - platform: arm64
-            runner: buildjet-32vcpu-ubuntu-2204-arm
+            runner: buildjet-16vcpu-ubuntu-2204-arm
             arch-platform: linux/arm64
             lib-dir: aarch64
     runs-on: ${{ matrix.runner }}
@@ -186,11 +186,11 @@ jobs:
             ansible/**
             docker/**
 
-      # - name: Free disk space
-      #   if: ${{ steps.changed-files.outputs.any_changed == 'true' ||
-      #     github.event_name == 'workflow_dispatch' ||
-      #     (github.event_name == 'push' && github.ref_type == 'tag') }}
-      #   uses: ./.github/actions/free-disk-space
+      - name: Free disk space
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' ||
+          github.event_name == 'workflow_dispatch' ||
+          (github.event_name == 'push' && github.ref_type == 'tag') }}
+        uses: ./.github/actions/free-disk-space
 
       - name: Build 'Autoware' with CUDA
         if: ${{ steps.changed-files.outputs.any_changed == 'true' ||
