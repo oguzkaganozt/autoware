@@ -12,6 +12,6 @@ services:
       rviz:=false
 
   visualizer:
-    image: ghcr.io/autowarefoundation/autoware-tools:visualizer
+    image: ghcr.io/oguzkaganozt/autoware-tools:visualizer-amd64
     ports:
       - 6080:6080
