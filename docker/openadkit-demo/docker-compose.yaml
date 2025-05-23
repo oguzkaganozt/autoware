@@ -22,7 +22,7 @@ services:
       - autoware_map:/opt/autoware/share/kashiwanoha_map/map
       
   visualizer:
-    image: ghcr.io/oguzkaganozt/autoware-tools:visualizer-amd64
+    image: visualizer
     environment:
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
     volumes:
