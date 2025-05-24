@@ -1,6 +1,6 @@
 services:
   autoware:
-    image: autoware:latest
+    image: ghcr.io/oguzkaganozt/autoware-tools:autoware-amd64
     environment:
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
       - RUN_MODE=planning-simulator
