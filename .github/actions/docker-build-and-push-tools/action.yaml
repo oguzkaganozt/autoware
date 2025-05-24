@@ -104,6 +104,19 @@ runs:
         flavor: |
           latest=false
 
+    - name: Docker meta for autoware-tools:autoware
+      id: meta-autoware
+      uses: docker/metadata-action@v5
+      with:
+        images: ghcr.io/${{ github.repository_owner }}/${{ inputs.target-image }}
+        tags: |
+          type=raw,value=autoware-${{ inputs.platform }}
+          type=raw,value=autoware-${{ steps.date.outputs.date }}-${{ inputs.platform }}
+          type=ref,event=tag,prefix=autoware-,suffix=-${{ inputs.platform }}
+        bake-target: docker-metadata-action-autoware
+        flavor: |
+          latest=false
+
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v3
       with:
