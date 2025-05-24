@@ -8,8 +8,8 @@ parse_params() {
     SENSOR_MODEL=${SENSOR_MODEL:-sample_sensor_kit}
     VEHICLE_MODEL=${VEHICLE_MODEL:-sample_vehicle}
     SCENARIO_SIMULATION=${SCENARIO_SIMULATION:-false}
-    RVIZ=${RVIZ:-false}
     USE_SIM_TIME=${USE_SIM_TIME:-false}
+    RVIZ=${RVIZ:-false}
 }
 
 # Launch plain autoware
@@ -32,8 +32,8 @@ launch_planning_simulator() {
         map_path:="$MAP_PATH" \
         sensor_model:="$SENSOR_MODEL" \
         vehicle_model:="$VEHICLE_MODEL" \
-        use_sim_time:="$USE_SIM_TIME" \
         scenario_simulation:="$SCENARIO_SIMULATION" \
+        use_sim_time:="$USE_SIM_TIME" \
         rviz:="$RVIZ"
 }
 

@@ -132,6 +132,7 @@ runs:
           docker/tools/docker-bake.hcl
           ${{ steps.meta-visualizer.outputs.bake-file }}
           ${{ steps.meta-scenario-simulator.outputs.bake-file }}
+          ${{ steps.meta-autoware.outputs.bake-file }}
         provenance: false
         set: |
           ${{ inputs.build-args }}
