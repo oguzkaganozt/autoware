@@ -20,7 +20,7 @@ run_scenario_simulator() {
 
     # Prompt if no scenario is provided
     if [ -z "$SCENARIO" ]; then
-        echo -e "\e[32mNo scenario provided, using default sample scenario...\e[0m"
+        echo -e "\e[33mNo scenario provided, using default sample scenario...\e[0m"
         SCENARIO=$(ros2 pkg prefix --share scenario_test_runner)/scenario/sample.yaml
     fi
 

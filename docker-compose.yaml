@@ -1,18 +1,12 @@
 services:
   autoware:
-    image: ghcr.io/autowarefoundation/autoware:universe
+    image: autoware:latest
     environment:
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      - RUN_MODE=planning-simulator
+      - SCENARIO_SIMULATION=true
     volumes:
       - autoware_map:/root/autoware_map
-    command: >
-      ros2 launch autoware_launch
-      planning_simulator.launch.xml
-      map_path:=/root/autoware_map
-      vehicle_model:=sample_vehicle
-      sensor_model:=sample_sensor_kit
-      scenario_simulation:=true
-      rviz:=false
   
   scenario_simulator:
     image: ghcr.io/oguzkaganozt/autoware-tools:scenario-simulator-amd64
