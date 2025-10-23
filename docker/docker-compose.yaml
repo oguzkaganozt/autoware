@@ -1,6 +1,6 @@
 services:
   map:
-    image: ghcr.io/autowarefoundation/autoware:universe-localization-mapping
+    image: ghcr.io/oguzkaganozt/autoware:universe-localization-mapping
     container_name: autoware-map
     init: true
     ipc: host
@@ -20,7 +20,7 @@ services:
     restart: on-failure
 
   planning:
-    image: ghcr.io/autowarefoundation/autoware:universe-planning-control
+    image: ghcr.io/oguzkaganozt/autoware:universe-planning-control
     container_name: autoware-planning
     pid: service:map
     ipc: host
@@ -43,7 +43,7 @@ services:
     restart: on-failure
 
   control:
-    image: ghcr.io/autowarefoundation/autoware:universe-planning-control
+    image: ghcr.io/oguzkaganozt/autoware:universe-planning-control
     container_name: autoware-control
     pid: service:map
     ipc: host
@@ -69,7 +69,7 @@ services:
     restart: on-failure
 
   vehicle:
-    image: ghcr.io/autowarefoundation/autoware:universe-vehicle-system
+    image: ghcr.io/oguzkaganozt/autoware:universe-vehicle-system
     container_name: autoware-vehicle
     pid: service:map
     ipc: host
@@ -91,7 +91,7 @@ services:
     restart: on-failure
 
   system:
-    image: ghcr.io/autowarefoundation/autoware:universe-vehicle-system
+    image: ghcr.io/oguzkaganozt/autoware:universe-vehicle-system
     container_name: autoware-system
     pid: service:map
     ipc: host
@@ -151,7 +151,7 @@ services:
       - logging-simulation
 
   localization:
-    image: ghcr.io/autowarefoundation/autoware:universe-localization-mapping
+    image: ghcr.io/oguzkaganozt/autoware:universe-localization-mapping
     container_name: autoware-localization
     pid: service:map
     ipc: host
@@ -174,8 +174,7 @@ services:
       - logging-simulation
 
   simulator:
-    # TODO(youtalk): Use autoware-tools:scenario-simulator image
-    image: ghcr.io/autowarefoundation/autoware:universe
+    image: ghcr.io/autowarefoundation/autoware-tools:scenario-simulator
     container_name: autoware-simulator
     pid: service:map
     ipc: host
@@ -212,7 +211,7 @@ services:
       - planning-simulation
 
   api:
-    image: ghcr.io/autowarefoundation/autoware:universe-api
+    image: ghcr.io/oguzkaganozt/autoware:universe-api
     container_name: autoware-api
     pid: service:map
     ipc: host
@@ -250,7 +249,7 @@ services:
       - visualization
 
   rosbag:
-    image: ghcr.io/autowarefoundation/autoware:universe
+    image: ghcr.io/oguzkaganozt/autoware:universe
     container_name: autoware-rosbag
     ipc: host
     init: true
